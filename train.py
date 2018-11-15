@@ -3,15 +3,16 @@ from model import *
 import datasets
 from sklearn.preprocessing import StandardScaler
 import pickle
-
+import os
 
 model_name = 'OneClassSVM'
 #nu = 0.0005
 kernel = 'rbf'
 #gamma = 0.0002
-
-normal_path = '/ifs9/BC_PS/wangdeyong/NIFTY_RD/PregTumor/OneClassSVM/normal2.xlsx'
-abnormal_path = '/ifs9/BC_PS/wangdeyong/NIFTY_RD/PregTumor/OneClassSVM/abnormal.xlsx'
+#training path
+model_home = os.getcwd()
+normal_path = model_home+'/datasets/normal2.xlsx'
+abnormal_path = model_home+'/datasets/abnormal.xlsx'
 
 print(abnormal_path)
 
@@ -56,7 +57,7 @@ clf.fit(X_train_std)
 #scores = clf.score_samples( X_val_std)
 #eval_r = evaluate(y_val,y_val_pred,scores)
 
-f = open("/ifs9/BC_PS/wangdeyong/NIFTY_RD/PregTumor/OneClassSVM/model8/out8.txt", "a")
+f = open(model_home+"/model/out.txt", "a")
 
 f.write('val result:\n')
 
@@ -98,7 +99,7 @@ for key in best.keys():
 f.write('\n')
 f.close() 
 
-model_home = '/ifs9/BC_PS/wangdeyong/NIFTY_RD/PregTumor/OneClassSVM/model8/'
+model_home = model_home+'/model/'
 #print(abnormal_path)
 
 sc_path = model_home + 'sc.pk'

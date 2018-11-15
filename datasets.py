@@ -6,8 +6,8 @@ import collections
 
 def load_csv(data_path):
     x = pd.read_excel(data_path)
-    x.pop('SampleID')
-    y = x.pop('Mark')
+    x.pop('SampleNO')
+    y = x.pop('label')
     return x, y
 
 def add_ab(X_no,y_no,X_ab,y_ab):
